@@ -2,7 +2,9 @@ import json
 import urllib.request
 import time
 
+
 class DataLoader:
+
     def __init__(self):
         self.city_ids = {}
         self.city_ids = {
