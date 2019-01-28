@@ -15,7 +15,7 @@ class DataProcessor:
     # returns list of dates in range (current_date_time, 5_days_later_date_time) with a step of 3 hours
     def get_list_of_dates_and_time(self):
         date_list = []
-        for i in range(0, 39):
+        for i in range(0, len(self.data.city_info)):
             date_list.append(self.data.city_info["Warszawa"]["list"][i]['dt_txt'])
         return date_list
 
@@ -33,7 +33,7 @@ class DataProcessor:
     #returns dictionary: {'2019-01-26 21:00:00': -6.07, '2019-01-27 00:00:00': -5.53,...
     def get_temperature_dict(self, city_name):
         temperature_list = {}
-        for i in range(0,39):
+        for i in range(0,len(self.data.city_info)):
             temperature_list[self.data.city_info[city_name]["list"][i]['dt_txt']] =\
                 self.data.city_info[city_name]["list"][i]['main']['temp']
         return temperature_list
@@ -48,7 +48,7 @@ class DataProcessor:
     # returns dictionary: {'2019-01-26 21:00:00': -6.07, '2019-01-27 00:00:00': -5.53,...
     def get_pressure_dict(self, city_name):
         temperature_list = {}
-        for i in range(0, 39):
+        for i in range(0, len(self.data.city_info)):
             temperature_list[self.data.city_info[city_name]["list"][i]['dt_txt']] = \
                 self.data.city_info[city_name]["list"][i]['main']['pressure']
         return temperature_list
@@ -63,7 +63,7 @@ class DataProcessor:
     # returns dictionary: {'2019-01-26 21:00:00': -6.07, '2019-01-27 00:00:00': -5.53,...
     def get_sea_level_dict(self, city_name):
         temperature_list = {}
-        for i in range(0, 39):
+        for i in range(0, len(self.data.city_info)):
             temperature_list[self.data.city_info[city_name]["list"][i]['dt_txt']] = \
                 self.data.city_info[city_name]["list"][i]['main']['sea_level']
         return temperature_list
@@ -78,7 +78,7 @@ class DataProcessor:
     #returns dicitionary: {'2019-01-26 21:00:00': 88, '2019-01-27 00:00:00': 92, '2019-01-27 03:00:00': 92,...
     def get_humidity_dict(self, city_name):
         humidity_list = {}
-        for i in range(0,39):
+        for i in range(0,len(self.data.city_info)):
             humidity_list[self.data.city_info[city_name]["list"][i]['dt_txt']] =\
                 self.data.city_info[city_name]["list"][i]['main']['humidity']
         return humidity_list
@@ -94,7 +94,7 @@ class DataProcessor:
     #returns dictionary: {'2019-01-26 21:00:00': {'speed': 2.22, 'deg': 126.001}, '2019-01-27 00:00:00': {'speed': 2.07, 'deg': 119.001},..
     def get_wind_dict(self, city_name):
         wind_list = {}
-        for i in range(0, 39):
+        for i in range(0, len(self.data.city_info)):
             wind_list[self.data.city_info[city_name]["list"][i]['dt_txt']] = \
                 self.data.city_info[city_name]["list"][i]['wind']
         return wind_list
@@ -122,7 +122,7 @@ class DataProcessor:
     #returns dicitionary with pairs {'date_time', 'cloudiness_%'}
     def get_cloudiness_dict(self, city_name):
         cloud_list = {}
-        for i in range(0, 39):
+        for i in range(0, len(self.data.city_info)):
             cloud_list[self.data.city_info[city_name]["list"][i]['dt_txt']] = \
                 self.data.city_info[city_name]["list"][i]['clouds']['all']
         return cloud_list
@@ -137,7 +137,7 @@ class DataProcessor:
     #returns weather description
     def get_weather_description_dict(self, city_name):
         desc_list = {}
-        for i in range(0, 39):
+        for i in range(0, len(self.data.city_info)):
             desc_list[self.data.city_info[city_name]["list"][i]['dt_txt']] = \
                 self.data.city_info[city_name]["list"][i]['weather'][0]['description']
         return desc_list
