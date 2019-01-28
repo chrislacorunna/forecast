@@ -61,9 +61,13 @@ class DataLoader:
     def load_whole_city_data(self):
         city_data = {}
         start_time = time.time()
+        length = len(self.city_ids.keys())
+        iterator = 1.0
         print("Started downloading forecast data...")
         for city_name in self.city_ids.keys():
             city_data[city_name] = self.load_city_data(city_name=city_name)
+            print("Download progress: {0:.0f}%...".format((iterator/length)*100))
+            iterator += 1
         end_time = time.time()
         print("Finished forecast data download in {}s.".format(end_time - start_time))
         return city_data
